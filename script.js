@@ -3,6 +3,7 @@ const stats = document.getElementById('stats');
 let score = 0
 let levels = 1
 let time = 5000
+let ongoing = false
 function sleep(milliseconds) {
   var start = new Date().getTime();
   for (var i = 0; i < 1e7; i++) {
@@ -49,19 +50,21 @@ function getQuestion(level){
 }
 
 function admitDefeat(){
+  ongoing = false
   alert("YOU GOT IT WRONG LOL (Score: " + score + ")")
   score = 0
-  time = 5000
+  
   levels = 1
   question.innerHTML = "Question"
   const element = document.createElement("button")
   element.innerHTML = "Start"
   element.setAttribute("id", "start")
   element.setAttribute("onclick", "startGame(); document.getElementById('start').remove()")
-  document.document.getElementById('coa').appendChild(element)
+  document.getElementById('coa').appendChild(element)
 }
 
 async function startGame() {
+  ongoing = true
   stats.innerHTML = "Level " + levels + ", Time = " + time/1000 + "s, Score = " + score;
   if (score==10){
     stats.innerHTML = "Level 2, Time = 5s, Score = "+score;
