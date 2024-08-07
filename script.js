@@ -16,6 +16,9 @@ function getQuestion(level){
   let num1 = Math.floor(Math.random() * (10 * level)) + 1 ;
   let num2 = Math.floor(Math.random() * (10 * level)) + 1 ;
   let operator = Math.floor(Math.random() * 4) + 1;
+  if (document.getElementById("hard").checked == true){
+    operator = Math.floor(Math.random() * 8) + 1;
+  }
   if (operator == 1){
     question.innerHTML = num1 + " + " + num2;
     return num1 + num2;
@@ -24,7 +27,7 @@ function getQuestion(level){
     question.innerHTML = num1 + " - " + num2;
     return num1 - num2;
   }
-  else if (operator == 3){
+  else if (operator == 3 || operator >= 5){
     if (levels <= 3){
       if (num2 >= 11){
         num2 = Math.floor(Math.random() * 10) + 1
@@ -58,6 +61,8 @@ function getQuestion(level){
   
 }
 
+
+
 function admitDefeat(){
   ongoing = false
   document.getElementById('hard').disabled = false
@@ -81,24 +86,29 @@ async function startGame() {
   } else {
     time = 5000
   }
-  stats.innerHTML = "Level " + levels + ", Time = " + time/1000 + "s, Score = " + score;
+  
   if (score==10){
-    stats.innerHTML = "Level 2, Time = 5s, Score = "+score;
+    
+    
     levels = 2
     
   } else if(score==25) {
-    stats.innerHTML = "Level 3, Time = 5s, Score = "+score;
+    
     levels = 3
    
   } else if(score==50) {
-    stats.innerHTML = "Level 4, Time = 5s, Score = "+score;
+    
     levels = 4
     
   } else if(score == 100) {
-    stats.innerHTML = "Level 5, Time = 5s, Score = "+score;
+    
     levels = 5
     
-  } 
+  } else if(score == 150) {
+    
+    levels = 6
+  }
+  stats.innerHTML = "Level " + levels + ", Time = " + time/1000 + "s, Score = " + score;
   var answer = getQuestion(levels)
   document.getElementById('answer').value = "";
   setTimeout(() => {
