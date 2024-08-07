@@ -14,7 +14,7 @@ function sleep(milliseconds) {
 }
 function getQuestion(level){
   let num1 = Math.floor(Math.random() * (10 * level)) + 1 ;
-  let num2 = Math.floor(Math.random() * (10 * level)) + 1 * level;
+  let num2 = Math.floor(Math.random() * (10 * level)) + 1 ;
   let operator = Math.floor(Math.random() * 4) + 1;
   if (operator == 1){
     question.innerHTML = num1 + " + " + num2;
