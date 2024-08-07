@@ -25,12 +25,21 @@ function getQuestion(level){
     return num1 - num2;
   }
   else if (operator == 3){
+    if (levels <= 3){
+      if (num2 >= 11){
+        num2 = Math.floor(Math.random() * 10) + 1
+      }
+    } else if (levels == 4){
+      num2 = Math.floor(Math.random() * 20) + 1
+    } else if (levels == 5) {
+      num2 = Math.floor(Math.random() * 40) + 1
+    }
     if (Math.floor(Math.random() * 2) == 1){
       num1 = num1 * -1;
     }
     if (Math.floor(Math.random() * 2) == 0){
       num2 = num2 * -1;
-    }
+    } 
     question.innerHTML = num1 + " * " + num2;
     
     return num1 * num2;
@@ -51,6 +60,7 @@ function getQuestion(level){
 
 function admitDefeat(){
   ongoing = false
+  document.getElementById('hard').disabled = false
   alert("YOU GOT IT WRONG LOL (Score: " + score + ")")
   score = 0
   
@@ -65,6 +75,12 @@ function admitDefeat(){
 
 async function startGame() {
   ongoing = true
+  document.getElementById('hard').disabled = true
+  if (document.getElementById('hard').checked == true){
+    time = 2500
+  } else {
+    time = 5000
+  }
   stats.innerHTML = "Level " + levels + ", Time = " + time/1000 + "s, Score = " + score;
   if (score==10){
     stats.innerHTML = "Level 2, Time = 5s, Score = "+score;
