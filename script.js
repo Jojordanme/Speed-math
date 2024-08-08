@@ -1,7 +1,7 @@
 const question = document.getElementById("question");
 const audio = new Audio('Vine boom.mp3');
 const stats = document.getElementById('stats');
-let score = 0
+let score = 25
 let levels = 1
 let time = 5000
 let ongoing = false
@@ -67,7 +67,9 @@ function trollololol(){
   document.getElementById("alienDiv").innerHTML = "<img src='boss.png' class='gremlin' width='250' height='150' >"
   
   
+  
   setTimeout(function(){
+    stats.innerHTML = "Level " + levels + ", Time = " + time/1000 + "s, Score = " + score;
     answer = getQuestion(levels);
   }, (2000));
 }
@@ -110,12 +112,22 @@ function jumpscare () {
 }
 
 async function startGame() {
+  let trolling = false
   ongoing = true
   if (levels >= 3){
     if (Math.floor(Math.random() * 2) == 1){
+      trolling = true
+      
       setTimeout(() => {
+        
         trollololol()
       },1000)
+    } else {
+      if (document.getElementById('hard').checked == true){
+      time = 2500
+    } else {
+      time = 5000
+    }
     }
   }
     document.getElementById('hard').disabled = true
@@ -134,11 +146,11 @@ async function startGame() {
     
   } else if(score==25) {
     document.getElementById("title").innerHTML = "They are here."
-    time = 6500
+   
     levels = 3
    
   } else if(score==50) {
-    
+    document.getElementById("title").innerHTML = "Speed math"
     levels = 4
     
   } else if(score == 65) {
@@ -148,8 +160,13 @@ async function startGame() {
   } else if(score == 80) {
     
     levels = 6
+  } else if(score == 100){
+    levels = 7
   }
   stats.innerHTML = "Level " + levels + ", Time = " + time/1000 + "s, Score = " + score;
+  if (trolling){
+    time = 6500
+  }
   answer = getQuestion(levels)
   document.getElementById('answer').value = "";
   setTimeout(() => {
@@ -171,8 +188,5 @@ var checkbox = document.getElementById('hard');
 checkbox.addEventListener('change', function() {
   if (this.checked) {
     jumpscare()
-    
-  } else {
-    
-  }
+  } 
 });
