@@ -1,7 +1,7 @@
 const question = document.getElementById("question");
 const audio = new Audio('Vine boom.mp3');
 const stats = document.getElementById('stats');
-let score = 0
+let score = 25
 let levels = 1
 let time = 5000
 let ongoing = false
@@ -77,7 +77,7 @@ function admitDefeat(){
 
   ongoing = false
   document.getElementById('hard').disabled = false
-  alert("YOU GOT IT WRONG LOL THE ANSWER WAS" + answer + " (Score: " + score + ")")
+  alert("YOU GOT IT WRONG LOL THE ANSWER WAS " + answer + " (Score: " + score + ")")
   score = 0
   
   levels = 1
