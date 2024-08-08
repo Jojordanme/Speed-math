@@ -5,6 +5,7 @@ let score = 0
 let levels = 1
 let time = 5000
 let ongoing = false
+let answer = 0
 function sleep(milliseconds) {
   var start = new Date().getTime();
   for (var i = 0; i < 1e7; i++) {
@@ -61,13 +62,22 @@ function getQuestion(level){
   }
   
 }
-
-
+// <img src="boss.png" class="gremlin" width="250" height="150" >
+function trollololol(){
+  document.getElementById("alienDiv").innerHTML = "<img src='boss.png' class='gremlin' width='250' height='150' >"
+  
+  
+  setTimeout(function(){
+    answer = getQuestion(levels);
+  }, (2000));
+}
 
 function admitDefeat(){
+  document.getElementById("title").innerHTML = "Speed math"
+
   ongoing = false
   document.getElementById('hard').disabled = false
-  alert("YOU GOT IT WRONG LOL (Score: " + score + ")")
+  alert("YOU GOT IT WRONG LOL THE ANSWER WAS" + answer + " (Score: " + score + ")")
   score = 0
   
   levels = 1
@@ -101,12 +111,20 @@ function jumpscare () {
 
 async function startGame() {
   ongoing = true
-  
+  if (levels >= 3){
+    if (Math.floor(Math.random() * 2) == 1){
+      setTimeout(() => {
+        trollololol()
+      },1000)
+    }
+  }
     document.getElementById('hard').disabled = true
-  if (document.getElementById('hard').checked == true){
-    time = 2500
-  } else {
-    time = 5000
+  if (score == 0){
+    if (document.getElementById('hard').checked == true){
+      time = 2500
+    } else {
+      time = 5000
+    }
   }
   
   if (score==10){
@@ -115,23 +133,24 @@ async function startGame() {
     levels = 2
     
   } else if(score==25) {
-    
+    document.getElementById("title").innerHTML = "They are here."
+    time = 6500
     levels = 3
    
   } else if(score==50) {
     
     levels = 4
     
-  } else if(score == 100) {
+  } else if(score == 65) {
     
     levels = 5
     
-  } else if(score == 150) {
+  } else if(score == 80) {
     
     levels = 6
   }
   stats.innerHTML = "Level " + levels + ", Time = " + time/1000 + "s, Score = " + score;
-  var answer = getQuestion(levels)
+  answer = getQuestion(levels)
   document.getElementById('answer').value = "";
   setTimeout(() => {
     let userAnswer = Number(document.getElementById('answer').value);
