@@ -1,4 +1,5 @@
 const question = document.getElementById("question");
+const audio = new Audio('Vine boom.mp3');
 const stats = document.getElementById('stats');
 let score = 0
 let levels = 1
@@ -78,9 +79,30 @@ function admitDefeat(){
   document.getElementById('coa').appendChild(element)
 }
 
+function jumpscare () {
+  
+  audio.play();
+  const element = document.createElement("img")
+  
+  element.setAttribute("src", "skull.png")
+  element.setAttribute("class", "boo")
+  document.getElementById('start').disabled = true;
+  
+  document.getElementById('coa').appendChild(element)
+  
+  setTimeout(() => {
+    element.setAttribute("class", "boo2")
+    setTimeout(() => {
+      element.remove()
+      document.getElementById('start').disabled = false
+    },2000)
+  },750)
+}
+
 async function startGame() {
   ongoing = true
-  document.getElementById('hard').disabled = true
+  
+    document.getElementById('hard').disabled = true
   if (document.getElementById('hard').checked == true){
     time = 2500
   } else {
@@ -124,3 +146,14 @@ async function startGame() {
     
   }, time)
 }
+
+var checkbox = document.getElementById('hard');
+
+checkbox.addEventListener('change', function() {
+  if (this.checked) {
+    jumpscare()
+    
+  } else {
+    
+  }
+});

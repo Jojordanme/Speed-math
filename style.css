@@ -9,3 +9,37 @@ html {
 * {
   font-family: 'Lexend', sans-serif;
 }
+
+.boo {
+  z-index:5;
+  
+  position: relative;
+  bottom:100px;
+  height: 100%;
+  width: 100%;
+  
+  animation: fadeIn 0.7s;
+}
+
+.boo2 {
+  z-index:5;
+  
+  
+  position: relative;
+  bottom:100px;
+  height: 100%;
+  width: 100%;
+  animation: fadeOut 2s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+
