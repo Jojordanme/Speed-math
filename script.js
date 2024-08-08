@@ -1,7 +1,7 @@
 const question = document.getElementById("question");
 const audio = new Audio('Vine boom.mp3');
 const stats = document.getElementById('stats');
-let score = 25
+let score = 0
 let levels = 1
 let time = 5000
 let ongoing = false
