@@ -34,9 +34,9 @@ function getQuestion(level){
       if (num2 >= 11){
         num2 = Math.floor(Math.random() * 10) + 1
       }
-    } else if (levels == 4){
+    } else if (levels <= 5){
       num2 = Math.floor(Math.random() * 20) + 1
-    } else if (levels == 5) {
+    } else if (levels == 6) {
       num2 = Math.floor(Math.random() * 40) + 1
     }
     if (Math.floor(Math.random() * 2) == 1){
@@ -149,11 +149,11 @@ async function startGame() {
    
     levels = 3
    
-  } else if(score==50) {
+  } else if(score==40) {
     document.getElementById("title").innerHTML = "Speed math"
     levels = 4
     
-  } else if(score == 65) {
+  } else if(score == 60) {
     
     levels = 5
     
