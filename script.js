@@ -74,6 +74,32 @@ function getQuestion(level){
   
 }
 // <img src="boss.png" class="gremlin" width="250" height="150" >
+
+// <img src="ON.png" class="lightBulb" width="250" height="250" >
+function lightsOUT(){
+  document.getElementById('lights').innerHTML = `<img src="ON.png" id="lightBlub" class="lightBulb" width="250" height="250" >`
+  document.getElementById("timer").innerHTML = `<div class="round-time-bar" data-style="smooth" style="--duration: 8;"><div></div></div>`
+  setTimeout(function(){
+    document.getElementById('lightBlub').classList.remove("lightBulb")
+      document.getElementById('lightBlub').classList.add("lightBulbNormal")
+    document.getElementById('lightBlub').src = "OFF.png";
+  },1499)
+  setTimeout(function(){
+    
+    
+    setTimeout(function(){
+      document.body.style.backgroundColor = "black";
+    },345)
+    setTimeout(function(){
+      document.getElementById('lightBlub').classList.remove("lightBulbNormal")
+      document.getElementById('lightBlub').classList.add("lightBulb2")
+      setTimeout(function(){
+        document.getElementById('lightBlub').remove()
+    },495)
+    },1000)
+  },2000)
+  
+}
 function trollololol(){
   document.getElementById("alienDiv").innerHTML = "<img src='boss.png' class='gremlin' width='250' height='150' >"
   
@@ -126,13 +152,14 @@ function jumpscare () {
 async function startGame() {
   let trolling = false
   ongoing = true
-  
+  let interval
+  document.body.style.backgroundColor = "white";
   
   
   if (levels >= 3){
     if (Math.floor(Math.random() * 2) == 1){
       trolling = true
-      
+      time = 6500
       setTimeout(() => {
         
         trollololol()
@@ -145,7 +172,18 @@ async function startGame() {
     }
     }
   }
-    document.getElementById('hard').disabled = true
+  if (levels >= 4){
+    if (!trolling){
+      time = 10000
+      trolling = true
+    setTimeout(() => {
+        
+        lightsOUT()
+      },500)
+    }
+    
+  }
+  document.getElementById('hard').disabled = true
   if (score == 0){
     if (document.getElementById('hard').checked == true){
       time = 2500
@@ -165,7 +203,8 @@ async function startGame() {
     levels = 3
    
   } else if(score==40) {
-    document.getElementById("title").innerHTML = "Speed math"
+    document.getElementById("title").innerHTML = "Hehehe..."
+    
     levels = 4
     
   } else if(score == 60) {
@@ -179,9 +218,7 @@ async function startGame() {
     levels = 7
   }
   stats.innerHTML = "Level " + levels + ", Time = " + time/1000 + "s, Score = " + score;
-  if (trolling){
-    time = 6500
-  }
+  
   answer = getQuestion(levels)
   document.getElementById('answer').value = "";
   setTimeout(() => {

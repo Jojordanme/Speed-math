@@ -73,10 +73,28 @@ html {
   }
 }
 
+.lightBulb {
+  z-index:50;
+  position: relative;
+  top:-650px;
+  left:20%;
+  animation: byeLight 1.5s; 
+}
 
+.lightBulbNormal {
+  z-index:50;
+  position: relative;
+  top:-390px;
+  left:20%;
+}
 
-
-
+.lightBulb2 {
+  z-index:50;
+  position: relative;
+  top:-390px;
+  left:20%;
+  animation: byeLight2 0.5s;
+}
 
 @keyframes fadeIn {
   0% { opacity: 0; }
@@ -92,4 +110,16 @@ html {
 @keyframes whoop {
   0% { right: 150%; }
   100% { right: -250%; }
+}
+
+@keyframes byeLight {
+  0% {top: -650px;
+  }
+  100% {top: -390px}
+}
+
+@keyframes byeLight2 {
+  0% {top: -390px; 
+  }
+  100% {top: -650px}
 }
