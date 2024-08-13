@@ -83,13 +83,12 @@ function lightsOUT(){
     document.getElementById('lightBlub').classList.remove("lightBulb")
       document.getElementById('lightBlub').classList.add("lightBulbNormal")
     document.getElementById('lightBlub').src = "OFF.png";
-  },1499)
+  },1500)
   setTimeout(function(){
     
     
-    setTimeout(function(){
-      document.body.style.backgroundColor = "black";
-    },345)
+    document.body.style.backgroundColor = "black";
+
     setTimeout(function(){
       document.getElementById('lightBlub').classList.remove("lightBulbNormal")
       document.getElementById('lightBlub').classList.add("lightBulb2")
