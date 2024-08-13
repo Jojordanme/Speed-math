@@ -14,6 +14,17 @@ function sleep(milliseconds) {
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
 function getQuestion(level){
   let num1 = Math.floor(Math.random() * (10 * level)) + 1 ;
   let num2 = Math.floor(Math.random() * (10 * level)) + 1 ;
@@ -70,6 +81,7 @@ function trollololol(){
   
   setTimeout(function(){
     stats.innerHTML = "Level " + levels + ", Time = " + time/1000 + "s, Score = " + score;
+    document.getElementById("timer").innerHTML = `<div class="round-time-bar" data-style="smooth" style="--duration: 3.5;"><div></div></div>`
     answer = getQuestion(levels);
   }, (2000));
 }
@@ -110,10 +122,13 @@ function jumpscare () {
     },2000)
   },750)
 }
-
+// <div class="round-time-bar" data-style="smooth" style="--duration: 5;">
 async function startGame() {
   let trolling = false
   ongoing = true
+  
+  
+  
   if (levels >= 3){
     if (Math.floor(Math.random() * 2) == 1){
       trolling = true
@@ -138,7 +153,7 @@ async function startGame() {
       time = 5000
     }
   }
-  
+  document.getElementById("timer").innerHTML = `<div class="round-time-bar" data-style="smooth" style="--duration: ${time/1000};"><div></div></div>`
   if (score==10){
     
     
