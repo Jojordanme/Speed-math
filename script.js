@@ -78,7 +78,7 @@ function getQuestion(level){
 // <img src="ON.png" class="lightBulb" width="250" height="250" >
 function lightsOUT(){
   document.getElementById('lights').innerHTML = `<img src="ON.png" id="lightBlub" class="lightBulb" width="250" height="250" >`
-  document.getElementById("timer").innerHTML = `<div class="round-time-bar" data-style="smooth" style="--duration: 8;"><div></div></div>`
+  document.getElementById("timer").innerHTML = `<div class="round-time-bar" data-style="smooth" style="--duration: 9.5;"><div></div></div>`
   setTimeout(function(){
     document.getElementById('lightBlub').classList.remove("lightBulb")
       document.getElementById('lightBlub').classList.add("lightBulbNormal")
