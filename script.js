@@ -109,6 +109,8 @@ function trollololol(){
 }
 
 function admitDefeat(){
+  document.body.style.backgroundColor = "white";
+
   document.getElementById("title").innerHTML = "Speed math"
 
   ongoing = false
