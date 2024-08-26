@@ -3,6 +3,7 @@ const audio = new Audio('Vine boom.mp3');
 const stats = document.getElementById('stats');
 let score = 0
 let levels = 1
+let justHadMinus = true
 let time = 5000
 let ongoing = false
 let answer = 0
@@ -15,7 +16,17 @@ function sleep(milliseconds) {
   }
 }
 
-
+const stuffHeCanSay = [
+  "Math is the best subject fr",
+  "Lets see if you can get this correct",
+  "I think you can do it",
+  "This is an easy one",
+  "Very easy you should be able to do it",
+  "blue",
+  "9+10=19",
+  "Come on this one is an easy one",
+  "Faster bruh"
+]
 
 
 
@@ -111,6 +122,8 @@ function trollololol(){
 function admitDefeat(){
   document.body.style.backgroundColor = "white";
 
+  justHadMinus = true
+  document.getElementById('HelpfulGuy').innerHTML = "Try again bozo"
   document.getElementById("title").innerHTML = "Speed math"
 
   ongoing = false
@@ -180,7 +193,12 @@ async function startGame() {
     }
     
   }
-  document.getElementById('hard').disabled = true
+  document.getElementById('HelpfulGuy').innerHTML = stuffHeCanSay[Math.floor(Math.random() * stuffHeCanSay.length)]
+  if(answer < 0 && justHadMinus){
+    justHadMinus = false
+    document.getElementById('HelpfulGuy').innerHTML = "Use the (-) button to multiply your answer by -1"
+  }
+    document.getElementById('hard').disabled = true
   if (score == 0){
     if (document.getElementById('hard').checked == true){
       time = 2500
