@@ -152,7 +152,11 @@ async function startGame() {
   ongoing = true
   let interval
   document.body.style.backgroundColor = "white";
-  
+  if (document.getElementById('hard').checked == true){
+      time = 2500
+    } else {
+      time = 5000
+    }
   
   if (levels >= 3){
     if (Math.floor(Math.random() * 2) == 1){
@@ -162,16 +166,11 @@ async function startGame() {
         
         trollololol()
       },1000)
-    } else {
-      if (document.getElementById('hard').checked == true){
-      time = 2500
-    } else {
-      time = 5000
-    }
-    }
+    } 
   }
   if (levels >= 4){
     if (!trolling){
+      if (Math.floor(Math.random() * 5) <= 3)
       time = 10000
       trolling = true
     setTimeout(() => {
