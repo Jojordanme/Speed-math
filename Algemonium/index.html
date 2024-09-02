@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Speed math</title>
+  <link href="../style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <button onclick="location.replace('rules')">How To Play</button>
+  <center id="coa">
+    
+    <h1 id="title">Mathemonium</h1>
+    <h2 id="stats">Level 0, Time = 3s</h2>
+  
+  
+  <h2 id="question">Question</h2>
+    <button id="minus" onclick="document.getElementById('answer').value = document.getElementById('answer').value * -1">-</button>
+       <input type="number" id="answer">
+  
+    <button id="start" onclick="startGame(); document.getElementById('start').remove()">Start</button>
+    <br>
+    <div id="timer">
+      <div id="hsmsms" class="algemonium-timer"><div id="bar"></div></div>
+    </div>
+    
+  <div></div>
+</div>
+    
+  
+  </center>
+  <br>
+  <input type="checkbox" name="hard" id="hard">
+
+  <label for="hard">Hard Mode</label>
+  <center>
+    <br>
+    <br>
+    <div id="HelpfulGuy">
+       hi i say stuff
+    </div>
+    
+    <br>
+    by jordan from 8D
+  </center>
+  <div id="alienDiv">
+   
+
+  </div>
+  <div id="lights"></div>
+  
+  <script src="../Algemonium/script2.js"></script>
+</body>
+
+</html>

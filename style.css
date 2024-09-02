@@ -42,11 +42,11 @@ html {
 
 
 
- .round-time-bar {
+ .round-time-bar, .algemonium-timer{
   margin: 1rem;
   overflow: hidden;
 }
-.round-time-bar div {
+.round-time-bar div, .algemonium-timer div{
   height: 5px;
   animation: roundtime calc(var(--duration) * 1s) steps(var(--duration))
     forwards;
@@ -57,6 +57,9 @@ html {
 .round-time-bar[data-style="smooth"] div {
   animation: roundtime calc(var(--duration) * 1s) linear forwards;
 }
+
+
+
 
 .round-time-bar[data-style="fixed"] div {
   width: calc(var(--duration) * 5%);
