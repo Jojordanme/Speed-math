@@ -52,7 +52,7 @@ function getQuestion(level){
   let num2 = Math.floor(Math.random() * (10 * level)) + 1 ;
   let operator = Math.floor(Math.random() * 4) + 1;
   if (document.getElementById("hard").checked == true){
-    operator = Math.floor(Math.random() * 8) + 1;
+    operator = Math.floor(Math.random() * 10) + 1;
   }
   if (operator == 1){
     question.innerHTML = num1 + " + " + num2;
@@ -176,6 +176,8 @@ function jumpscare () {
 // <div class="round-time-bar" data-style="smooth" style="--duration: 5;">
 
 async function startGame(){
+  document.getElementById('stats').innerHTML = `Level 0, Time = 3s`
+    document.getElementById('hard').disabled = true
   time = 3000
   question.innerHTML = "Get Ready!"
   otherInterval = setInterval(function(){
@@ -208,7 +210,7 @@ async function startGame(){
     answer = getQuestion(levels);
     score += 1
     
-  },2500)
+  },2000)
   interval = setInterval(function(){
      
     if (!correct){
@@ -216,8 +218,12 @@ async function startGame(){
       document.getElementById('bar').style = "background:linear-gradient(to bottom, #FF0000, #5e0000)!important;"
     } else {
       document.getElementById('bar').style = "background:linear-gradient(to bottom, #01d300, #007b01!important;"
-    
-      time += 50
+      if (document.getElementById('hard').checked){
+        time += 20
+      } else {
+        time += 50
+      }
+      
       if (time > 3000){
         time = 3000
       }
