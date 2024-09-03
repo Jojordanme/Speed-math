@@ -5,8 +5,9 @@ let score = 0
 let levels = 1
 let otherInterval = null
 let justHadMinus = true
-let time = 3000
+let time = 2000
 let ongoing = false
+let its = false
 let answer = 0
 function sleep(milliseconds) {
   var start = new Date().getTime();
@@ -20,12 +21,12 @@ function sleep(milliseconds) {
 
 
 setInterval(function(){
-  if (Number(document.getElementById('answer').value) == answer){
+  if (Number(document.getElementById('answer').value) == answer || !ongoing){
     correct = true
   } else {
     correct = false
   }
-    document.getElementById('hsmsms').style =`width:${(time /3000) * 90}%`
+    document.getElementById('hsmsms').style =`width:${(time /2000) * 90}%`
 },10)
 
 
@@ -119,27 +120,32 @@ function lightsOUT(){
   
 }
 function trollololol(){
-  document.getElementById("alienDiv").innerHTML = "<img src='boss.png' class='gremlin' width='250' height='150' >"
+  document.getElementById("alienDiv").innerHTML = "<img src='../boss.png' class='gremlin' width='250' height='150' >"
   
   
   
   setTimeout(function(){
-    stats.innerHTML = "Level " + levels + ", Time = " + time/1000 + "s, Score = " + score;
-    document.getElementById("timer").innerHTML = `<div class="round-time-bar" data-style="smooth" style="--duration: 3.5;"><div></div></div>`
-    answer = getQuestion(levels);
-  }, (2000));
+    its = true
+    stats.innerHTML = "Level " + levels + ", Time = 2s"
+    time += 750
+    if (time > 2000){
+      time = 2000
+    }
+    answer = getQuestion(levels + 1);
+  }, (1500));
 }
 
 function admitDefeat(){
   clearInterval(interval)
   clearInterval(otherInterval)
   interval = null
+  otherInterval = null
     document.body.style.backgroundColor = "white";
 
   justHadMinus = true
   document.getElementById('HelpfulGuy').innerHTML = "Try again bozo"
   document.getElementById("title").innerHTML = "Mathemonium"
-
+  its = false
   ongoing = false
   document.getElementById('hard').disabled = false
   alert("TOO SLOW BRO ITS " + answer + " (You survived " + score + " Questions!)")
@@ -176,12 +182,14 @@ function jumpscare () {
 // <div class="round-time-bar" data-style="smooth" style="--duration: 5;">
 
 async function startGame(){
-  document.getElementById('stats').innerHTML = `Level 0, Time = 3s`
+  document.getElementById('stats').innerHTML = `Level 0, Time = 2s`
     document.getElementById('hard').disabled = true
-  time = 3000
+  time = 2000
   question.innerHTML = "Get Ready!"
   otherInterval = setInterval(function(){
-    document.getElementById('stats').innerHTML = `Level ${levels}, Time = 3s`
+    ongoing = true
+    if (!its){
+      
     if (score==10){
     
     
@@ -207,10 +215,21 @@ async function startGame(){
   } else if(score == 100){
     levels = 7
   }
+      document.getElementById('stats').innerHTML = `Level ${levels}, Time = 3s`
     answer = getQuestion(levels);
     score += 1
-    
-  },2000)
+
+    if (levels >= 2){
+      if (Math.floor(Math.random() * 3) == 2){
+        trollololol()
+      }
+      
+    }
+    } else {
+      its = false
+      
+    }
+  },2750)
   interval = setInterval(function(){
      
     if (!correct){
@@ -224,8 +243,8 @@ async function startGame(){
         time += 50
       }
       
-      if (time > 3000){
-        time = 3000
+      if (time > 2000){
+        time = 2000
       }
     }
     if (time <= 0){
