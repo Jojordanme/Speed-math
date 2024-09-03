@@ -215,7 +215,7 @@ async function startGame(){
   } else if(score == 100){
     levels = 7
   }
-      document.getElementById('stats').innerHTML = `Level ${levels}, Time = 3s`
+      document.getElementById('stats').innerHTML = `Level ${levels}, Time = 2s`
     answer = getQuestion(levels);
     score += 1
 
