@@ -1,5 +1,7 @@
 const question = document.getElementById("question");
-const audio = new Audio('Vine boom.mp3');
+const audio = new Audio('../Vine boom.mp3');
+const music = new Audio('music.mp3');
+music.loop = true
 const stats = document.getElementById('stats');
 let score = 0
 let levels = 1
@@ -136,6 +138,8 @@ function trollololol(){
 }
 
 function admitDefeat(){
+  music.pause()
+  music.currentTime = 0
   clearInterval(interval)
   clearInterval(otherInterval)
   interval = null
@@ -186,6 +190,8 @@ async function startGame(){
     document.getElementById('hard').disabled = true
   time = 2000
   question.innerHTML = "Get Ready!"
+  document.getElementById("helpfulGuy").innerHTML = "Music: According to my calculations..."
+  music.play()
   otherInterval = setInterval(function(){
     ongoing = true
     if (!its){
