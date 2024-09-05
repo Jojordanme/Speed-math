@@ -30,7 +30,11 @@ const stuffHeCanSay = [
 
 
 
-
+function check(){
+  if (document.location.href.includes("?fromNyll")){
+    alert("nice your from nyllion")
+  }
+}
 
 
 

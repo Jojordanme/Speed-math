@@ -190,7 +190,7 @@ async function startGame(){
     document.getElementById('hard').disabled = true
   time = 2000
   question.innerHTML = "Get Ready!"
-  document.getElementById("HelpfulGuy").innerHTML = "Music: According to my calculations..."
+  document.getElementById("HelpfulGuy").innerHTML = "Music: Lab Nerd - According to my calculations..."
   music.play()
   otherInterval = setInterval(function(){
     ongoing = true
