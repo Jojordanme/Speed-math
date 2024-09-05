@@ -7,7 +7,8 @@ let score = 0
 let levels = 1
 let otherInterval = null
 let justHadMinus = true
-let time = 2000
+let maxTime = 4000
+let time = maxTime
 let ongoing = false
 let its = false
 let answer = 0
@@ -28,7 +29,7 @@ setInterval(function(){
   } else {
     correct = false
   }
-    document.getElementById('hsmsms').style =`width:${(time /2000) * 90}%`
+    document.getElementById('hsmsms').style =`width:${(time /maxTime) * 90}%`
 },10)
 
 
@@ -128,10 +129,10 @@ function trollololol(){
   
   setTimeout(function(){
     its = true
-    stats.innerHTML = "Level " + levels + ", Time = 2s"
+    stats.innerHTML = "Level " + levels + ", Time = " + maxTime/1000 + "s"
     time += 750
-    if (time > 2000){
-      time = 2000
+    if (time > maxTime){
+      time = maxTime
     }
     answer = getQuestion(levels + 1);
   }, (1500));
@@ -186,9 +187,14 @@ function jumpscare () {
 // <div class="round-time-bar" data-style="smooth" style="--duration: 5;">
 
 async function startGame(){
-  document.getElementById('stats').innerHTML = `Level 0, Time = 2s`
+  document.getElementById('stats').innerHTML = `Level 0, Time = ${maxTime /1000}s`
     document.getElementById('hard').disabled = true
-  time = 2000
+  if (!document.getElementById('hard').checked){
+    maxTime = 4000
+  } else {
+    maxTime = 2000
+  }
+  time = maxTime
   question.innerHTML = "Get Ready!"
   document.getElementById("HelpfulGuy").innerHTML = "Music: Lab Nerd - According to my calculations..."
   music.play()
@@ -221,7 +227,7 @@ async function startGame(){
   } else if(score == 100){
     levels = 7
   }
-      document.getElementById('stats').innerHTML = `Level ${levels}, Time = 2s`
+      document.getElementById('stats').innerHTML = `Level ${levels}, Time = ${maxTime /1000}s`
     answer = getQuestion(levels);
     score += 1
 
@@ -239,18 +245,18 @@ async function startGame(){
   interval = setInterval(function(){
      
     if (!correct){
-      time -= 10
+      time -= 15
       document.getElementById('bar').style = "background:linear-gradient(to bottom, #FF0000, #5e0000)!important;"
     } else {
       document.getElementById('bar').style = "background:linear-gradient(to bottom, #01d300, #007b01!important;"
       if (document.getElementById('hard').checked){
-        time += 20
+        time += 25
       } else {
         time += 50
       }
       
-      if (time > 2000){
-        time = 2000
+      if (time > maxTime){
+        time = maxTime
       }
     }
     if (time <= 0){
